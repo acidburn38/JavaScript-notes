@@ -212,8 +212,81 @@ let charsInBody = (function counter(elm) {
 
 
 //* Les objets personnalisés
+// Exmple d'objet ou une fonction y est attachée
+function creerPersonne(prenom, nom) {
+    return {
+      prenom: prenom,
+      nom: nom,
+      nomComplet: function() {
+        return this.prenom + ' ' + this.nom;
+        },
+      nomCompletInverse: function() {
+        return this.nom + ' ' + this.prenom;
+        }
+    };
+}
+  
+let s = creerPersonne("Simon", "Willison")
+s.nomComplet(); // Simon Willison
+s.nomCompletInverse(); // Willison Simon
 
+// Avec un constructeur
+function Personne(prenom, nom) {
+    this.prenom = prenom;
+    this.nom = nom;
+    this.nomComplet = function() {
+      return this.prenom + ' ' + this.nom;
+    }
+    this.nomCompletInverse = function() {
+      return this.nom + ' ' + this.prenom;
+    }
+}
+let s = new Personne("Simon", "Willison");
 
+// Oject.prototype est un objet oartagé par toutes les instances
+function Personne(prenom, nom) {
+    this.prenom = prenom;
+    this.nom = nom;
+}
+Personne.prototype.nomComplet = function() {
+    return this.prenom + ', ' + this.nom;
+}
+Personne.prototype.nomCompletInverse = function() {
+    return this.nom + ', ' + this.prenom;
+}
+
+// Ajout de méthode à la fonction Personne
+let s = new Personne("Simon", "Willison");
+s.prenomEnMajuscules(); // TypeError on line 1: s.prenomEnMajuscules is not a function
+
+Personne.prototype.prenomEnMajuscules = function prenomEnMajuscules() {
+  return this.prenom.toUpperCase()
+}
+s.prenomEnMajuscules(); // "SIMON"
+
+// Méthode string qui renvoie une chaine de caractère à l'envers
+let s = "Simon";
+s.inverse(); // TypeError on line 1: s.inverse is not a function
+
+String.prototype.inverse = function inverse() {
+let r = "";
+  for (let i = this.length - 1; i >= 0; i--) {
+    r += this[i];
+  }
+  return r;
+}
+s.inverse(); // "nomiS"
+
+//* Les fermetures
+function creerAdditionneur(a) {
+    return function(b) {
+      return a + b;
+    }
+}
+let ajoute5 = creerAdditionneur(5);
+let ajoute20 = creerAdditionneur(20);
+ajoute5(6); // 11
+ajoute20(7); // 27
 
 
 
