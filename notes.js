@@ -61,12 +61,13 @@ let obj1 = new Object();
 let obj2 = {};
 let obj = {
     name: 'Carotte',
-    _for: 'Max', // Le mot "for" est un mot réservé, utilisez plutôt "_for".
+    _for: 'Max', // Le mot "for" est un mot réservé, utilisez plutôt "_for"
     details: {
       color: 'orange',
       size: 12
     }
 };
+// Accéder aux prorpiétés de l'objet.
 obj.details.color; // orange
 obj['details']['size']; // 12
 
@@ -78,7 +79,7 @@ function Person(name, age) {
 
 // Définir un objet
 let you = new Person('You', 24);
-// Nous créons une nouvelle personne nommée "You" âgée de 24 ans.
+// Nous créons une nouvelle personne nommée "You" âgée de 24 ans
 
 // Notation par points
 obj.name = 'Simon';
@@ -257,7 +258,7 @@ Personne.prototype.nomCompletInverse = function() {
 
 // Ajout de méthode à la fonction Personne
 let s = new Personne("Simon", "Willison");
-s.prenomEnMajuscules(); // TypeError on line 1: s.prenomEnMajuscules is not a function
+s.prenomEnMajuscules(); 
 
 Personne.prototype.prenomEnMajuscules = function prenomEnMajuscules() {
   return this.prenom.toUpperCase()
@@ -266,7 +267,7 @@ s.prenomEnMajuscules(); // "SIMON"
 
 // Méthode string qui renvoie une chaine de caractère à l'envers
 let s = "Simon";
-s.inverse(); // TypeError on line 1: s.inverse is not a function
+s.inverse(); 
 
 String.prototype.inverse = function inverse() {
 let r = "";
