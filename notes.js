@@ -27,6 +27,27 @@ const pet = "Patti";
 
 
 //* ---Opérateurs
+
+// JavaScript Comparaison Operators
+// ==	equal to
+// ===	equal value and equal type
+// !=	not equal
+// !==	not equal value or not equal type
+// >	greater than
+// <	less than
+// >=	greater than or equal to
+// <=	less than or equal to
+// ?	ternary operator
+
+// JavaScript Logical Operators
+// &&	logical and
+// ||	logical or
+// !	logical not
+
+// JavaScript Type Operators
+// typeof	Returns the type of a variable
+// instanceof	Returns true if an object is an instance of an object type
+
 // Opérateur Math permet de supprimer le nombre après la virgule
 console.log(Math.floor(3 / 2)); // 1
 
@@ -135,6 +156,31 @@ a.sort([cmpfn]) // Trie le tableau (avec une fonction de comparaison optionnelle
 a.splice(start, delcount[, item1[, ...[, itemN]]]) // Permet de modifier un tableau en en supprimant une partie et en la remplaçant avec plus d'éléments.
 a.reverse() // Retourne le tableau.
 
+// Array map()
+//Return a new array with the square root of all element values:
+const numbers = [4, 9, 16, 25];
+const newArr = numbers.map(Math.sqrt)
+
+//Multiply all the values in an array with 10:
+const nombres = [65, 44, 12, 4];
+const newTab = nombres.map(myFunction)
+
+function myFunction(num) {
+  return num * 10;
+}
+
+//Get the full name for each person:
+const persons = [
+  {firstname : "Malcom", lastname: "Reynolds"},
+  {firstname : "Kaylee", lastname: "Frye"},
+  {firstname : "Jayne", lastname: "Cobb"}
+];
+
+persons.map(getFullName);
+
+function getFullName(item) {
+  return [item.firstname,item.lastname].join(" ");
+}
 
 
 //* ---Les fonctions
@@ -211,6 +257,32 @@ let charsInBody = (function counter(elm) {
 })(document.body);
 
 
+//* Fonctions à flèche ou arrow function
+// Arrow Function:
+
+hello = () => {
+  return "Hello World!";
+}
+
+hello = () => {
+  document.getElementById("demo").innerHTML += this;
+}
+
+//Arrow Functions Return Value by Default:
+hello = () => "Hello World!";
+
+//Arrow Function With Parameters:
+hello = (val) => "Hello " + val;
+
+//Arrow Function Without Parentheses:
+hello = val => "Hello " + val;
+
+// The window object calls the function:
+window.addEventListener("load", hello);
+
+// A button object calls the function:
+document.getElementById("btn").addEventListener("click", hello);
+
 
 //* Les objets personnalisés
 // Exmple d'objet ou une fonction y est attachée
@@ -244,7 +316,7 @@ function Personne(prenom, nom) {
 }
 let s = new Personne("Simon", "Willison");
 
-// Oject.prototype est un objet oartagé par toutes les instances
+// Oject.prototype est un objet partagé par toutes les instances
 function Personne(prenom, nom) {
     this.prenom = prenom;
     this.nom = nom;
